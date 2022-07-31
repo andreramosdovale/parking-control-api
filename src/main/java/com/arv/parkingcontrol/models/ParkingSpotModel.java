@@ -3,6 +3,7 @@ package com.arv.parkingcontrol.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_parking_spot")
@@ -28,6 +29,8 @@ public class ParkingSpotModel implements Serializable {
     private String apartment;
     @Column(nullable = false, length = 30)
     private String block;
+
+    public ParkingSpotModel() {}
 
     public Long getId() {
         return id;
@@ -107,5 +110,17 @@ public class ParkingSpotModel implements Serializable {
 
     public void setBlock(String block) {
         this.block = block;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ParkingSpotModel that)) return false;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
