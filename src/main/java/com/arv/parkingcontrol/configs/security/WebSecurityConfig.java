@@ -18,9 +18,9 @@ public class WebSecurityConfig {
 //                .antMatchers(HttpMethod.GET, "/parking-spot/**").permitAll()
 //                .antMatchers(HttpMethod.POST, "/parking-spot").hasRole("USER")
 //                .antMatchers(HttpMethod.DELETE, "/parking-spot/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .csrf().disable();
+                .anyRequest().permitAll();
+//                .and()
+//                .csrf().disable();
         return http.build();
     }
 
